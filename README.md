@@ -21,8 +21,6 @@ git clone https://github.com/Cobot-Maker-Space/turtlebot-dekstop-container.git
 cd turtlebot-desktop-container/src
 ```
 
-> Replace `yourusername` with your actual GitHub username.
-
 ---
 
 ### 2. Open in VS Code
