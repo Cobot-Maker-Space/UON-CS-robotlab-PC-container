@@ -1,0 +1,16 @@
+[0.047s] Invoking command in '/home/turtlebot3_ws/build/dynamixel_sdk': CMAKE_PREFIX_PATH=/opt/ros/humble /usr/bin/cmake /home/turtlebot3_ws/src/DynamixelSDK/ros/dynamixel_sdk -DAMENT_CMAKE_SYMLINK_INSTALL=1 -DCMAKE_INSTALL_PREFIX=/home/turtlebot3_ws/install/dynamixel_sdk
+[0.074s] -- Found ament_cmake: 1.3.11 (/opt/ros/humble/share/ament_cmake/cmake)
+[0.228s] -- Override CMake install command with custom implementation using symlinks instead of copying resources
+[0.387s] -- Configuring done
+[0.395s] -- Generating done
+[0.397s] -- Build files have been written to: /home/turtlebot3_ws/build/dynamixel_sdk
+[0.415s] Invoked command in '/home/turtlebot3_ws/build/dynamixel_sdk' returned '0': CMAKE_PREFIX_PATH=/opt/ros/humble /usr/bin/cmake /home/turtlebot3_ws/src/DynamixelSDK/ros/dynamixel_sdk -DAMENT_CMAKE_SYMLINK_INSTALL=1 -DCMAKE_INSTALL_PREFIX=/home/turtlebot3_ws/install/dynamixel_sdk
+[0.416s] Invoking command in '/home/turtlebot3_ws/build/dynamixel_sdk': CMAKE_PREFIX_PATH=/opt/ros/humble /usr/bin/cmake --build /home/turtlebot3_ws/build/dynamixel_sdk -- -j22 -l22
+[0.469s] [35m[1mConsolidate compiler generated dependencies of target dynamixel_sdk[0m
+[0.484s] failed to create symbolic link '/home/turtlebot3_ws/build/dynamixel_sdk/ament_cmake_python/dynamixel_sdk/dynamixel_sdk' because existing path cannot be removed: Is a directory
+[0.485s] [100%] Built target dynamixel_sdk
+[0.485s] gmake[2]: *** [CMakeFiles/ament_cmake_python_symlink_dynamixel_sdk.dir/build.make:70: CMakeFiles/ament_cmake_python_symlink_dynamixel_sdk] Error 1
+[0.485s] gmake[1]: *** [CMakeFiles/Makefile2:166: CMakeFiles/ament_cmake_python_symlink_dynamixel_sdk.dir/all] Error 2
+[0.485s] gmake[1]: *** Waiting for unfinished jobs....
+[0.486s] gmake: *** [Makefile:146: all] Error 2
+[0.489s] Invoked command in '/home/turtlebot3_ws/build/dynamixel_sdk' returned '2': CMAKE_PREFIX_PATH=/opt/ros/humble /usr/bin/cmake --build /home/turtlebot3_ws/build/dynamixel_sdk -- -j22 -l22

@@ -1,0 +1,51 @@
+{
+    "name": "ROS 2 Development Container",
+    "privileged": true,
+    "remoteUser": "pszaa1",
+    "build": {
+        "dockerfile": "Dockerfile",
+        "args": {
+            "BASE_IMAGE": "ros:humble",
+            "USERNAME": "pszaa1"
+        }
+    },
+    "workspaceFolder": "/home/turtlebot3_ws",
+    "workspaceMount": "source=${localWorkspaceFolder},target=/home/turtlebot3_ws/src,type=bind",
+    "customizations": {
+        "vscode": {
+            "extensions":[
+                "ms-vscode.cpptools",
+                "ms-vscode.cpptools-themes",
+                "twxs.cmake",
+                "donjayamanne.python-extension-pack",
+                "eamodio.gitlens",
+                "ms-iot.vscode-ros"
+            ]
+        }
+    },
+    "containerEnv": {
+        "DISPLAY": "${env:DISPLAY}",
+        // "DISPLAY": "unix:0",
+        "ROS_LOCALHOST_ONLY": "0",
+        "ROS_DOMAIN_ID": "30"    ,
+        // "ROS_DISCOVERY_SERVER": "10.148.191.167:11811",
+        // "ROS_SUPER_CLIENT": "true",
+        "RMW_IMPLEMENTATION": "rmw_fastrtps_cpp"
+    },
+    "runArgs": [
+        "--net=host",
+        // "-e", "DISPLAY=${env:DISPLAY}"
+        "--device=/dev/video0",
+        "--group-add=video",
+        "-e", "DISPLAY"
+        // "--privileged"
+    ],
+    "mounts": [
+    //    "source=/tmp/.X11-unix,target=/tmp/.X11-unix,type=bind,consistency=cached",
+        "source=/dev/dri,target=/dev/dri,type=bind,consistency=cached",
+        "source=${localWorkspaceFolder}/../cache/humble/build,target=/home/turtlebot3_ws/build,type=bind",
+        "source=${localWorkspaceFolder}/../cache/humble/install,target=/home/turtlebot3_ws/install,type=bind",
+        "source=${localWorkspaceFolder}/../cache/humble/log,target=/home/turtlebot3_ws/log,type=bind"
+    ],
+    "postCreateCommand": "sudo rosdep update && sudo rosdep install --from-paths src --ignore-src -y && sudo chown -R pszaa1 /home/turtlebot3_ws/ && sudo apt update && sudo apt install -y net-tools nano iputils-ping ros-humble-navigation2 ros-humble-slam-toolbox ros-humble-teleop-twist-keyboard ros-humble-gazebo-* ros-humble-cartographer ros-humble-cartographer-ros python3-colcon-common-extensions"
+}

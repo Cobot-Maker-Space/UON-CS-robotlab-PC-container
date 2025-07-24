@@ -1,0 +1,5 @@
+failed to create symbolic link '/home/turtlebot3_ws/build/dynamixel_sdk/ament_cmake_python/dynamixel_sdk/dynamixel_sdk' because existing path cannot be removed: Is a directory
+gmake[2]: *** [CMakeFiles/ament_cmake_python_symlink_dynamixel_sdk.dir/build.make:70: CMakeFiles/ament_cmake_python_symlink_dynamixel_sdk] Error 1
+gmake[1]: *** [CMakeFiles/Makefile2:166: CMakeFiles/ament_cmake_python_symlink_dynamixel_sdk.dir/all] Error 2
+gmake[1]: *** Waiting for unfinished jobs....
+gmake: *** [Makefile:146: all] Error 2
