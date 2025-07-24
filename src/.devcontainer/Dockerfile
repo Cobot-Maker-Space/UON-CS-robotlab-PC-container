@@ -1,5 +1,5 @@
 FROM ros:humble
-ARG USERNAME=pszaa1
+ARG USERNAME="your-username"
 ARG USER_UID=1000
 ARG USER_GID=$USER_UID
 
