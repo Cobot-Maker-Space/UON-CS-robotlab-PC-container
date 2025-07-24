@@ -77,6 +77,7 @@ If ROS 2 is installed correctly, you’ll see an empty or populated list dependi
 | Issue | Solution |
 |-------|----------|
 | `Permission denied` on `/dev/video0` | Add the user to the `video` group or pass proper `--device` and `--privileged` flags in `devcontainer.json`. |
+| `permission denied while trying to connect to the Docker daemon socket at unix:///var/run/docker.sock` | Add user to the `docker` group  an then run `sudo usermod -aG docker $USER` and `newgrp docker` |
 | ROS 2 topics not showing across network | Ensure matching `ROS_DOMAIN_ID` and `ROS_LOCALHOST_ONLY=0` across devices and that you're using the same `RMW_IMPLEMENTATION`. |
 
 ---
