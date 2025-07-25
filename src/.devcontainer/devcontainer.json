@@ -47,5 +47,5 @@
         "source=${localWorkspaceFolder}/../cache/humble/install,target=/home/turtlebot3_ws/install,type=bind",
         "source=${localWorkspaceFolder}/../cache/humble/log,target=/home/turtlebot3_ws/log,type=bind"
     ],
-    "postCreateCommand": "sudo rosdep update && sudo rosdep install --from-paths src --ignore-src -y && sudo chown -R $USERNAME /home/turtlebot3_ws/ && sudo apt update && sudo apt install -y net-tools nano iputils-ping ros-humble-navigation2 ros-humble-slam-toolbox ros-humble-teleop-twist-keyboard ros-humble-gazebo-* ros-humble-cartographer ros-humble-cartographer-ros python3-colcon-common-extensions"
+    "postCreateCommand": "sudo rosdep update && sudo rosdep install --from-paths src --ignore-src -y && sudo chown -R $USERNAME /home/turtlebot3_ws/ && sudo apt update && sudo apt install -y net-tools nano iputils-ping ros-humble-navigation2 ros-humble-slam-toolbox ros-humble-teleop-twist-keyboard ros-humble-gazebo-* ros-humble-cartographer ros-humble-cartographer-ros ros-humble-cv-bridge python3-colcon-common-extensions"
 }
