@@ -32,50 +32,120 @@ cd turtlebot-desktop-container/src
 
 ---
 
-### 3. Personalize the Container (IMPORTANT)
-
-Open the following files:
-- `.devcontainer/devcontainer.json`
-- `.devcontainer/Dockerfile`
-
-Search and replace all occurrences of:
-
-```text
-$USERNAME
-```
-
-with your **actual Linux terminal username** 
-
----
-
-### 4. Start the Container
+### 3. Reopen in Dev Container
 
 Inside VS Code:
 
 - Press `Ctrl+Shift+P`
 - Type and select: `Dev Containers: Reopen in Container`
 - VS Code will now build and launch your ROS 2 container
+- Also in your PC's terminal run:
+
+```bash
+xhost +local:docker
+```
 
 ---
 
-### 5. Test the Setup
+### 4. Test the Setup
 
-Once inside the container terminal:
+Inside the container terminal:
 
 ```bash
+source /opt/ros/humble/setup.bash
 ros2 topic list
 ```
 
 If ROS 2 is installed correctly, you’ll see an empty or populated list depending on what's running.
 
----
+### 5. Conenction with the Turtlebot (on Wi-Fi)
 
-## Potential Issues
+Inside the container, a variety of environment are already set up through devcontainer.json file which would be mathcing the turtlebot env variables, i.e., `ROS_DOMAIN_ID=30` and `ROS_LOCALHOST_ONLY=0`
+
+Now boot the turtlebot up and make sure its on the same network. Launch the bringup file on it, now if you run the topic list comamnd, you can see all the available topics that are running.
+
+```bash
+ros2 topic list
+```
+
+If the turtlebot is up, and you still can't view the topics try the above command after running the following commands:
+
+```bash
+ros2 daemon stop
+ros2 daemon start
+```
+
+### 6. Conenction with the Turtlebot (on Wired Connection)
+
+Run the following command in your container terminal:
+
+```bash
+fastdds discovery --server-id 0
+```
+
+Now open another terminal inside the container, and check the IP of the machine:
+
+```bash
+ifconfig
+```
+
+Save the IP and now run the following commands:
+
+```bash
+export ROS_DISCOVERY_SERVER=IP_ADDRESS:11811
+export ROS_SUPER_CLIENT=TRUE
+export RMW_IMPLEMENTATION=rmw_fastrtps_cpp    # or cyclone on both, must match
+```
+
+Now run:
+
+```bash
+ros2 daemon stop
+
+ros2 daemon start
+```
+
+
+The above coommands would basically creater a server and then we would make our terminals make clients susbscribing to that server.
+
+We would run the above commands on the Turtlebot terminal too:
+
+```bash
+export ROS_DISCOVERY_SERVER=IP_ADDRESS:11811
+export ROS_SUPER_CLIENT=TRUE
+export RMW_IMPLEMENTATION=rmw_fastrtps_cpp    # or cyclone on both, must match
+```
+
+Now run:
+
+```bash
+ros2 daemon stop
+
+ros2 daemon start
+```
+
+And now launch the bringup file on it, you can see all the available topics that are running.
+
+```bash
+ros2 topic list
+```
+
+## 🛠 Common Issues & Solutions
 
 | Issue | Solution |
 |-------|----------|
-| `Permission denied` on `/dev/video0` | Add the user to the `video` group or pass proper `--device` and `--privileged` flags in `devcontainer.json`. |
-| `permission denied while trying to connect to the Docker daemon socket at unix:///var/run/docker.sock` | Add user to the `docker` group  an then run `sudo usermod -aG docker $USER` and `newgrp docker` |
-| ROS 2 topics not showing across network | Ensure matching `ROS_DOMAIN_ID` and `ROS_LOCALHOST_ONLY=0` across devices and that you're using the same `RMW_IMPLEMENTATION`. |
+| `Docker permission denied` | Make sure your user is added to the `docker` group: <br> `sudo usermod -aG docker $USER` <br> Then restart or run `newgrp docker`. |
+| `Cannot access /dev/video0` | Add your user to the `video` group: <br> `sudo usermod -aG video $USER` |
+| `No ROS 2 topics across devices` | Ensure matching `ROS_DOMAIN_ID`, set `ROS_LOCALHOST_ONLY=0`, and use same `RMW_IMPLEMENTATION`. And try to repeat the 6th Step in case of wired setup. |
+| When launching Gazebo simulations, `Spawn service failed. Exiting.` | Run `ls /opt/ros/humble/lib/libgazebo_ros_factory.so` and if you indeed see a file then  try `ros2 pkg list | grep gazebo` and see if ros packages are there and then try to run it again. |
+---
+
+## 💡 Notes
+
+- Default user inside container is `team-beta` (non-root).
+- Workspace is mounted to `/home/ros2_ws/src`.
+- Includes support for Gazebo, SLAM, Navigation2, Teleop, Cartographer, and more.
+- VS Code extensions preinstalled for ROS, C++, Python, and Git.
 
 ---
+
