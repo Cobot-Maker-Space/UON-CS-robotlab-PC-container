@@ -74,7 +74,7 @@ If the turtlebot is up, and you still can't view the topics try the above comman
 ros2 daemon stop
 ros2 daemon start
 ```
-
+<!--
 ### 6. Conenction with the Turtlebot (on Wired Connection)
 
 Run the following command in your container terminal:
@@ -129,15 +129,33 @@ And now launch the bringup file on it, you can see all the available topics that
 ```bash
 ros2 topic list
 ```
+-->
+### 6. After the Initial Tests
+
+Once the container is set up and you want to make changes and create packages which you want to persist even after the container is closed. Open the `decontainer.json` and comment out the line:
+
+```bash
+"postCreateCommand": "rm -rf build/* install/* log/* src/* && cd src/ && git clone -b humble https://github.com/ROBOTIS-GIT/DynamixelSDK.git && git clone -b humble https://github.com/ROBOTIS-GIT/turtlebot3.git && git clone -b humble https://github.com/ROBOTIS-GIT/turtlebot3_msgs.git && git clone -b humble https://github.com/ROBOTIS-GIT/turtlebot3_simulations.git && cd .. && colcon build --symlink-install"
+```
+
+And uncomment the line on top of it:
+
+```bash
+"postCreateCommand": "colcon build --symlink-install"
+```
+
+This step is crucial for making new custom packages and for reducing the time taken by the container to boot up.
+
 
 ## 🛠 Common Issues & Solutions
 
 | Issue | Solution |
 |-------|----------|
-| `Docker permission denied` | Make sure your user is added to the `docker` group: <br> `sudo usermod -aG docker $USER` <br> Then restart or run `newgrp docker`. |
+| `Docker permission denied` | Make sure your user is added to the `docker` group: <br> `sudo usermod -aG docker $USER` <br> Then logout your user and then log back in and check. |
 | `Cannot access /dev/video0` | Add your user to the `video` group: <br> `sudo usermod -aG video $USER` |
-| `No ROS 2 topics across devices` | Ensure matching `ROS_DOMAIN_ID`, set `ROS_LOCALHOST_ONLY=0`, and use same `RMW_IMPLEMENTATION`. And try to repeat the 6th Step in case of wired setup. |
+<!--| `No ROS 2 topics across devices` | Ensure matching `ROS_DOMAIN_ID`, set `ROS_LOCALHOST_ONLY=0`, and use same `RMW_IMPLEMENTATION`. And try to repeat the 6th Step in case of wired setup. | -->
 | When launching Gazebo simulations, if it takes too much time and exits at `Spawn service failed. Exiting.` | Do not press `Ctrl + C` Let it fail completely and cleanly and then close it and run it again.  |
+
 ---
 
 ## 💡 Notes
