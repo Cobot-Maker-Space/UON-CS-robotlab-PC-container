@@ -43,7 +43,9 @@
         "source=${localWorkspaceFolder}/../cache/humble/install,target=/home/ros2_ws/install,type=bind",
         "source=${localWorkspaceFolder}/../cache/humble/log,target=/home/ros2_ws/log,type=bind"
     ],
-    // "postCreateCommand": "rosdep update && rosdep install --from-paths src --ignore-src -r -y && colcon build --symlink-install"
-    "postCreateCommand": "colcon build --symlink-install"
-
+    // For later uses run this command:
+    // "postCreateCommand": "colcon build --symlink-install"
+    
+    // For first time users and setup use this command, then you can change it to the above one after everything is cnmfigured
+    "postCreateCommand": "rm -rf build/* install/* log/* src/* && cd src/ && git clone -b humble https://github.com/ROBOTIS-GIT/DynamixelSDK.git && git clone -b humble https://github.com/ROBOTIS-GIT/turtlebot3.git && git clone -b humble https://github.com/ROBOTIS-GIT/turtlebot3_msgs.git && git clone -b humble https://github.com/ROBOTIS-GIT/turtlebot3_simulations.git && cd .. && colcon build --symlink-install"
 }
