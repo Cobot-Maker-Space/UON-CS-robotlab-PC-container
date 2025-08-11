@@ -153,9 +153,8 @@ This step is crucial for making new custom packages and for reducing the time ta
 |-------|----------|
 | `Docker permission denied` | Make sure your user is added to the `docker` group: <br> `sudo usermod -aG docker $USER` <br> Then logout your user and then log back in and check. |
 | `Cannot access /dev/video0` | Add your user to the `video` group: <br> `sudo usermod -aG video $USER` |
+| When launching Gazebo simulations, if it takes too much time and exits at `Spawn service failed. Exiting.` | Do not press `Ctrl + C` Let it fail completely and cleanly and then close it and run it again. |
 <!--| `No ROS 2 topics across devices` | Ensure matching `ROS_DOMAIN_ID`, set `ROS_LOCALHOST_ONLY=0`, and use same `RMW_IMPLEMENTATION`. And try to repeat the 6th Step in case of wired setup. | -->
-| When launching Gazebo simulations, if it takes too much time and exits at `Spawn service failed. Exiting.` | Do not press `Ctrl + C` Let it fail completely and cleanly and then close it and run it again.  |
-
 ---
 
 ## 💡 Notes
