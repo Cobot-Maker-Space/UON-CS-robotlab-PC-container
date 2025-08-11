@@ -41,7 +41,12 @@ RUN apt-get update && apt-get install -y \
     ros-humble-rviz2 \
     && rm -rf /var/lib/apt/lists/*
 
-
+RUN mkdir -p /home/ros2_ws/src && cd /home/ros2_ws/src && \
+    [ -d turtlebot3 ] || git clone -b humble https://github.com/ROBOTIS-GIT/turtlebot3.git && \
+    [ -d turtlebot3_msgs ] || git clone -b humble https://github.com/ROBOTIS-GIT/turtlebot3_msgs.git && \
+    [ -d DynamixelSDK ] || git clone -b humble https://github.com/ROBOTIS-GIT/DynamixelSDK.git && \
+    [ -d turtlebot3_simulations ] || git clone -b humble https://github.com/ROBOTIS-GIT/turtlebot3_simulations.git
+    
 # Source ROS setup
 RUN echo "source /opt/ros/humble/setup.bash && source /home/ros2_ws/install/setup.bash" >> /home/$USERNAME/.bashrc
 RUN usermod -aG video team-beta
