@@ -137,7 +137,7 @@ ros2 topic list
 | `Docker permission denied` | Make sure your user is added to the `docker` group: <br> `sudo usermod -aG docker $USER` <br> Then restart or run `newgrp docker`. |
 | `Cannot access /dev/video0` | Add your user to the `video` group: <br> `sudo usermod -aG video $USER` |
 | `No ROS 2 topics across devices` | Ensure matching `ROS_DOMAIN_ID`, set `ROS_LOCALHOST_ONLY=0`, and use same `RMW_IMPLEMENTATION`. And try to repeat the 6th Step in case of wired setup. |
-| When launching Gazebo simulations, `Spawn service failed. Exiting.` | Run `ls /opt/ros/humble/lib/libgazebo_ros_factory.so` and if you indeed see a file then  try `ros2 pkg list | grep gazebo` and see if ros packages are there and then try to run it again. |
+| When launching Gazebo simulations, if it takes too much time and exits at `Spawn service failed. Exiting.` | Do not press `Ctrl + C` Let it fail completely and cleanly and then close it and run it again.  |
 ---
 
 ## 💡 Notes
