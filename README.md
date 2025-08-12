@@ -57,7 +57,7 @@ ros2 topic list
 
 If ROS 2 is installed correctly, you’ll see an empty or populated list depending on what's running.
 
-### 5. Conenction with the Turtlebot (on Wi-Fi)
+### 5. Connection with the Turtlebot (on Wi-Fi)
 
 Inside the container, a variety of environment are already set up through devcontainer.json file which would be mathcing the turtlebot env variables, i.e., `ROS_DOMAIN_ID=30` and `ROS_LOCALHOST_ONLY=0`
 
@@ -131,7 +131,12 @@ ros2 topic list
 -->
 ### 6. After the Initial Tests
 
-Once the container is set up and you want to make changes and create packages which you want to persist even after the container is closed. Open the `decontainer.json` and comment out the line:
+Once the container is set up and you want to make changes and create packages which you want to persist even after the container is closed. 
+
+  - Press `Ctrl+Shift+P`
+  - Type and select: `Dev Containers: Reopen folder locally`
+
+Open the `devcontainer.json` and comment out the last line:
 
 ```bash
 "postCreateCommand": "rm -rf build/* install/* log/* src/* && cd src/ && git clone -b humble https://github.com/ROBOTIS-GIT/DynamixelSDK.git && git clone -b humble https://github.com/ROBOTIS-GIT/turtlebot3.git && git clone -b humble https://github.com/ROBOTIS-GIT/turtlebot3_msgs.git && git clone -b humble https://github.com/ROBOTIS-GIT/turtlebot3_simulations.git && cd .. && colcon build --symlink-install"
