@@ -59,7 +59,7 @@ If ROS 2 is installed correctly, you’ll see an empty or populated list dependi
 
 ### 5. Connection with the Turtlebot (on Wi-Fi)
 
-Inside the container, a variety of environment are already set up through devcontainer.json file which would be mathcing the turtlebot env variables, i.e., `ROS_DOMAIN_ID=30` and `ROS_LOCALHOST_ONLY=0`
+Inside the container, a variety of environment are already set up through devcontainer.json file which would be mathcing the turtlebot env variables, i.e., `ROS_DOMAIN_ID=30` , `ROS_LOCALHOST_ONLY=0` and `TURTLEBOT3_MODEL=waffle_pi`.
 
 Now boot the turtlebot up and make sure its on the same network. Launch the bringup file on it, now if you run the topic list comamnd, you can see all the available topics that are running.
 
