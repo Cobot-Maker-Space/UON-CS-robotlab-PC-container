@@ -36,14 +36,14 @@ cd turtlebot-desktop-container/src
 
 Inside VS Code:
 
-- Press `Ctrl+Shift+P`
-- Type and select: `Dev Containers: Reopen in Container`
-- VS Code will now build and launch your ROS 2 container
-- Also in your PC's terminal run:
+- Open the PC's terminal and run:
 
 ```bash
 xhost +local:docker
 ```
+- Press `Ctrl+Shift+P`
+- Type and select: `Dev Containers: Reopen in Container`
+- VS Code will now build and launch your ROS 2 container
 
 ---
 
