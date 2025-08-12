@@ -41,9 +41,10 @@ Inside VS Code:
 ```bash
 xhost +local:docker
 ```
-- Press `Ctrl+Shift+P`
-- Type and select: `Dev Containers: Reopen in Container`
-- VS Code will now build and launch your ROS 2 container
+- Inside VS Code:
+-     Press `Ctrl+Shift+P`
+-     Type and select: `Dev Containers: Reopen in Container`
+-     VS Code will now build and launch your ROS 2 container
 
 ---
 
