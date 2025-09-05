@@ -39,7 +39,10 @@
         "--group-add=video"
     ],
     "mounts": [
+        // Comment the below line for MacOS or Windows Build as its meant for GPU acceleration Access on Linux
         "source=/dev/dri,target=/dev/dri,type=bind,consistency=cached",
+
+        
         "source=${localWorkspaceFolder}/../cache/humble/build,target=/home/ros2_ws/build,type=bind",
         "source=${localWorkspaceFolder}/../cache/humble/install,target=/home/ros2_ws/install,type=bind",
         "source=${localWorkspaceFolder}/../cache/humble/log,target=/home/ros2_ws/log,type=bind"
