@@ -2,7 +2,7 @@
 
 This repository contains a ready-to-use **Docker-based ROS 2 Humble** development environment for working with **TurtleBot3**. It includes Visual Studio Code support, useful extensions, and common ROS 2 packages preinstalled — making it easy to get started with TurtleBot simulation and development on any Linux machine.
 
-Note: To make the container run on MacOS or Windows Machine, follow the same steps just before running step 3, go to line 43 and comment it out to successfully compile it on a non-linux machine.
+Note: To make the container run on MacOS or Windows Machine, follow the same steps just before running step 3, go to `line 43` in `devcontainer.json` and comment it out to successfully build the container.
 
 ```bash
 source=/dev/dri,target=/dev/dri,type=bind,consistency=cached,
