@@ -34,6 +34,7 @@ RUN apt-get update && apt-get install -y \
     ros-humble-teleop-twist-keyboard \
     ros-humble-gazebo-ros-pkgs\
     ros-humble-gazebo-plugins \
+    ros-humble-cv-bridge \
     ros-humble-rqt* \
     # ros-humble-gazebo-*\
     # ros-humble-ros-gz\
