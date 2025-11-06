@@ -1,7 +1,7 @@
     {
         "name": "ROS 2 Development Container",
         "privileged": true,
-        "remoteUser": "team",
+        "remoteUser": "team-beta",
         "image":"my-devcontainer-image:latest",
         
         //"build": {
