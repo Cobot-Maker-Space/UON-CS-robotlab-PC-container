@@ -43,6 +43,7 @@ RUN apt-get update && apt-get install -y \
     ros-humble-rviz2 \
     && rm -rf /var/lib/apt/lists/*
 
+RUN pip install pyrealsense2
 # RUN mkdir -p /home/ros2_ws/src && cd /home/ros2_ws/src && \
 #     [ -d turtlebot3 ] || git clone -b humble https://github.com/ROBOTIS-GIT/turtlebot3.git && \
 #     [ -d turtlebot3_msgs ] || git clone -b humble https://github.com/ROBOTIS-GIT/turtlebot3_msgs.git && \
