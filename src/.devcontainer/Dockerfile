@@ -1,7 +1,7 @@
 # FROM ros:humble
 FROM my-devcontainer-image:latest
 
-ARG USERNAME=team
+ARG USERNAME=team-beta
 ARG USER_UID=1000
 ARG USER_GID=$USER_UID
 
