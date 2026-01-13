@@ -45,6 +45,8 @@ RUN apt-get update && apt-get install -y \
     && rm -rf /var/lib/apt/lists/*
 
 RUN pip install pyrealsense2
+RUN pip install paho-mqtt
+
 # RUN mkdir -p /home/ros2_ws/src && cd /home/ros2_ws/src && \
 #     [ -d turtlebot3 ] || git clone -b humble https://github.com/ROBOTIS-GIT/turtlebot3.git && \
 #     [ -d turtlebot3_msgs ] || git clone -b humble https://github.com/ROBOTIS-GIT/turtlebot3_msgs.git && \
