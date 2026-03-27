@@ -1,19 +1,19 @@
-    {
+            {
+        "name": "ROS 2 Development Container",
         "name": "my-devcontainer-image",
-        "image":"my-devcontainer-image:latest",
-        // "name": "ROS 2 Development Container",
+        //"image":"my-devcontainer-image:latest",
         "privileged": true,
-        "remoteUser": "user",
-        "updateRemoteUserUID": false,
-
         
-        // "build": {
-        //     "dockerfile": "Dockerfile",
-        //     "args": {
-        //         "BASE_IMAGE": "ros:humble",
-        //         "USERNAME": "user"
-        //     }
-        // },
+        //"remoteUser": "team-beta",
+        //"image":"my-devcontainer-image:latest",
+        
+        "build": {
+            "dockerfile": "Dockerfile",
+            "args": {
+                "BASE_IMAGE": "ros:humble",
+                "USERNAME": "team-beta"
+            }
+        },
         "workspaceFolder": "/home/ros2_ws",
         "workspaceMount": "source=${localWorkspaceFolder},target=/home/ros2_ws/src,type=bind",
         "customizations": {
