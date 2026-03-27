@@ -1,9 +1,6 @@
-            {
+    {
         "name": "ROS 2 Development Container",
-        "name": "my-devcontainer-image",
-        //"image":"my-devcontainer-image:latest",
         "privileged": true,
-        
         //"remoteUser": "team-beta",
         //"image":"my-devcontainer-image:latest",
         
@@ -30,17 +27,18 @@
         },
         "containerEnv": {
             "DISPLAY": "${env:DISPLAY}",
-            "ROS_LOCALHOST_ONLY": "0"
+            // "ROS_LOCALHOST_ONLY": "0",
             // "ROS_DOMAIN_ID": "30",
-            // "RMW_IMPLEMENTATION": "rmw_fastrtps_cpp"
+            "RMW_IMPLEMENTATION": "rmw_fastrtps_cpp"
             // "TURTLEBOT3_MODEL": "waffle_pi"
         },
         "runArgs": [
             "--net=host",
-            "--gpus=all",
             "-e", "DISPLAY",
-    	    "-e", "NVIDIA_VISIBLE_DEVICES=all",
-    	    "-e", "NVIDIA_DRIVER_CAPABILITIES=all",
+            "-e", "ROS_SUPER_CLIENT",
+            "-e", "ROS_DISCOVERY_SERVER",
+            "-e", "ROS_DOMAIN_ID",
+            "-e", "TURTLEBOT3_MODEL",
             "--device=/dev/video0",
             "--device=/dev/dri",
             "--volume=/tmp/.X11-unix:/tmp/.X11-unix",
@@ -62,5 +60,5 @@
         // "postCreateCommand": "colcon build --symlink-install"
         
         // For first time users and setup use this command, then you can change it to the above one after everything is cnmfigured
-        "postCreateCommand": "colcon build --symlink-install"
+        "postCreateCommand": "rm -rf build/* install/* log/* && colcon build --symlink-install"
     }
