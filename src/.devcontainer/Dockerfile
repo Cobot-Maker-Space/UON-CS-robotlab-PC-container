@@ -1,5 +1,5 @@
-# FROM ros:humble
-FROM my-devcontainer-image:latest
+FROM ros:humble
+# FROM my-devcontainer-image:latest
 
 ARG USERNAME=user
 ARG USER_UID=1000
