@@ -17,8 +17,8 @@ This repository contains a ready-to-use **Docker-based ROS 2 Humble** developmen
 ### 1. Clone the Repository
 
 ```bash
-git clone https://github.com/Cobot-Maker-Space/turtlebot-desktop-container.git
-cd turtlebot-desktop-container/src
+git clone https://github.com/Cobot-Maker-Space/UON-CS-robotlab-PC-container.git
+cd UON-CS-robotlab-PC-container/src
 ```
 
 ---
@@ -59,7 +59,7 @@ If ROS 2 is installed correctly, you’ll see an empty or populated list dependi
 
 ### 5. Connection with the Turtlebot (on Wi-Fi)
 
-Inside the container, a variety of environment are already set up through devcontainer.json file which would be mathcing the turtlebot env variables, i.e., `ROS_DOMAIN_ID=30` , `ROS_LOCALHOST_ONLY=0` and `TURTLEBOT3_MODEL=waffle_pi`.
+Inside the container, a variety of environment are already set up through devcontainer.json file which would be mathcing the turtlebot env variables, and via .rosenv file which we are going to set up with Ansible on deployment.
 
 Now boot the turtlebot up and make sure its on the same network. Launch the bringup file on it, now if you run the topic list comamnd, you can see all the available topics that are running.
 
@@ -129,27 +129,7 @@ And now launch the bringup file on it, you can see all the available topics that
 ros2 topic list
 ```
 -->
-### 6. After the Initial Tests
-
-Once the container is set up and you want to make changes and create packages which you want to persist even after the container is closed. 
-
-  - Press `Ctrl+Shift+P`
-  - Type and select: `Dev Containers: Reopen folder locally`
-
-Open the `devcontainer.json` and comment out the last line:
-
-```bash
-"postCreateCommand": "rm -rf build/* install/* log/* src/* && cd src/ && git clone -b humble https://github.com/ROBOTIS-GIT/DynamixelSDK.git && git clone -b humble https://github.com/ROBOTIS-GIT/turtlebot3.git && git clone -b humble https://github.com/ROBOTIS-GIT/turtlebot3_msgs.git && git clone -b humble https://github.com/ROBOTIS-GIT/turtlebot3_simulations.git && cd .. && colcon build --symlink-install"
-```
-
-And uncomment the line on top of it:
-
-```bash
-"postCreateCommand": "colcon build --symlink-install"
-```
-
-This step is crucial for making new custom packages and for reducing the time taken by the container to boot up.
-
+  
 
 ## 🛠 Common Issues & Solutions
 
@@ -163,11 +143,10 @@ This step is crucial for making new custom packages and for reducing the time ta
 
 ## 💡 Notes
 
-- Default user inside container is `team-beta` (non-root).
+- Default user inside container is `team-user` (non-root).
 - Workspace is mounted to `/home/ros2_ws/src`.
 - Includes support for Gazebo, SLAM, Navigation2, Teleop, Cartographer, and more.
 - VS Code extensions preinstalled for ROS, C++, Python, and Git.
 
 ---
 
-# ros2-container
