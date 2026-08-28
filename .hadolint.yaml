@@ -1,0 +1,10 @@
+ignored:
+  # DL3008: pin apt package versions.
+  # Deliberately not applied here: ros-humble-* and their transitive apt
+  # dependencies are served from a rolling Debian/ROS mirror that removes
+  # old package builds within months. A version pinned today will 404 on a
+  # rebuild later, breaking the image outright instead of making it more
+  # reproducible. Reproducibility for this image comes from pinning the
+  # base image tag (`FROM ros:humble`) and rebuilding on your own schedule,
+  # not from pinning individual apt package versions.
+  - DL3008

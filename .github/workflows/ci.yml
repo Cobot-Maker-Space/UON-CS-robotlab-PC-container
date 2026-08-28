@@ -1,0 +1,30 @@
+# .github/workflows/ci.yml
+
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  validate-and-build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out the repo
+        uses: actions/checkout@v4
+
+      - name: Validate devcontainer.json syntax
+        run: |
+          sed 's://.*$::' src/.devcontainer/devcontainer.json | jq empty
+
+      - name: Lint Dockerfile
+        uses: hadolint/hadolint-action@v3.1.0
+        with:
+          dockerfile: src/.devcontainer/Dockerfile
+          config: .hadolint.yaml
+
+      - name: Build the devcontainer image
+        run: |
+          docker build -f src/.devcontainer/Dockerfile -t ci-test-image src

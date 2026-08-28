@@ -13,7 +13,7 @@ RUN groupadd --gid $USER_GID $USERNAME && \
 ENV SHELL=/bin/bash
 
 # Pre-install system dependencies and ROS packages
-RUN apt-get update && apt-get install -y \
+RUN apt-get update && apt-get install -y --no-install-recommends \
     python3-pip \
     python3-opencv\
     libopencv-dev\
@@ -22,7 +22,6 @@ RUN apt-get update && apt-get install -y \
     iputils-ping \
     curl \
     fswebcam \
-    nano \
     gnupg2 \
     lsb-release \
     sudo \
@@ -44,13 +43,14 @@ RUN apt-get update && apt-get install -y \
     ros-humble-rviz2 \
     && rm -rf /var/lib/apt/lists/*
 
-RUN pip install pyrealsense2
-RUN pip install paho-mqtt
+RUN pip install --no-cache-dir \
+    pyrealsense2==2.58.3.10794 \
+    paho-mqtt==2.1.0
 
-    
-# Source ROS setup
-RUN echo "source /opt/ros/humble/setup.bash && source /home/ros2_ws/install/setup.bash" >> /home/$USERNAME/.bashrc
-RUN usermod -aG video $USERNAME
+# Source ROS setup, add user to video group
+RUN echo "source /opt/ros/humble/setup.bash && source /home/ros2_ws/install/setup.bash" >> /home/$USERNAME/.bashrc && \
+    usermod -aG video $USERNAME
+
 # Set default user
 USER $USERNAME
 
