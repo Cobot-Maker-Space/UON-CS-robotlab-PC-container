@@ -50,7 +50,7 @@ RUN pip install paho-mqtt
     
 # Source ROS setup
 RUN echo "source /opt/ros/humble/setup.bash && source /home/ros2_ws/install/setup.bash" >> /home/$USERNAME/.bashrc
-RUN usermod -aG video team-beta
+RUN usermod -aG video $USERNAME
 # Set default user
 USER $USERNAME
 
