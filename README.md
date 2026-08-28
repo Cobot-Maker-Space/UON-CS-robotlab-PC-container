@@ -1,5 +1,7 @@
 # Turtlebot Desktop Development Container 
 
+[![CI](https://github.com/mohammad-areeb/CI-testing-repo-for-container/actions/workflows/ci.yml/badge.svg)](https://github.com/mohammad-areeb/CI-testing-repo-for-container/actions/workflows/ci.yml)
+
 This repository contains a ready-to-use **Docker-based ROS 2 Humble** development environment for working with **TurtleBot3**. It includes Visual Studio Code support, useful extensions, and common ROS 2 packages preinstalled — making it easy to get started with TurtleBot simulation and development on any Linux machine.
 
 ---
