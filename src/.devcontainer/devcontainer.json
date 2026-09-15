@@ -3,7 +3,8 @@
         "image":"my-devcontainer-image:latest",
         "privileged": true,
         "remoteUser": "team-user",
-        "updateRemoteUserUID": false,
+        //"updateRemoteUserUID": false,
+        "updateRemoteUserUID": true,
         
         //"build": {
         //    "dockerfile": "Dockerfile",
