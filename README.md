@@ -41,9 +41,9 @@ code .
 ### 3. Reopen in Dev Container
 
 1. Now inside VS Code:
-  - Press `Ctrl+Shift+P`
-  - Type and select: `Dev Containers: Rebuild and Reopen in Container`
-  - VS Code will now build and launch your ROS 2 container
+    - Press `Ctrl+Shift+P`
+    - Type and select: `Dev Containers: Rebuild and Reopen in Container`
+    - VS Code will now build and launch your ROS 2 container
 
 2. You should see now a colcon build running on your screen and building all the Turtlebot packages.
 
