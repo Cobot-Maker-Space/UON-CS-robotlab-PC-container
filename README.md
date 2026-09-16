@@ -55,6 +55,8 @@ code .
 
 ### 4. Test the Setup
 
+Inside the container, a variety of environment variables are already set up through devcontainer.json file which would be matching the turtlebot environment variables, via `.rosenv` file which we have set up with Ansible on deployment.
+
 Inside the container terminal:
 
 ```bash
@@ -64,79 +66,7 @@ ros2 topic list
 
 If ROS 2 environment is installed correctly, and your Turtlebot is switched on for at least 2 Minutes, you’ll see a populated list of the Turtlebot Topics.
 
-### 5. Connection with the Turtlebot (on Wi-Fi)
-
-Inside the container, a variety of environment are already set up through devcontainer.json file which would be mathcing the turtlebot env variables, and via .rosenv file which we are going to set up with Ansible on deployment.
-
-Now boot the turtlebot up and make sure its on the same network. Launch the bringup file on it, now if you run the topic list comamnd, you can see all the available topics that are running.
-
-```bash
-ros2 topic list
-```
-
-If the turtlebot is up, and you still can't view the topics try the above command after running the following commands:
-
-```bash
-ros2 daemon stop
-ros2 daemon start
-```
-<!--
-### 6. Conenction with the Turtlebot (on Wired Connection)
-
-Run the following command in your container terminal:
-
-```bash
-fastdds discovery --server-id 0
-```
-
-Now open another terminal inside the container, and check the IP of the machine:
-
-```bash
-ifconfig
-```
-
-Save the IP and now run the following commands:
-
-```bash
-export ROS_DISCOVERY_SERVER=IP_ADDRESS:11811
-export ROS_SUPER_CLIENT=TRUE
-export RMW_IMPLEMENTATION=rmw_fastrtps_cpp    # or cyclone on both, must match
-```
-
-Now run:
-
-```bash
-ros2 daemon stop
-
-ros2 daemon start
-```
-
-
-The above coommands would basically creater a server and then we would make our terminals make clients susbscribing to that server.
-
-We would run the above commands on the Turtlebot terminal too:
-
-```bash
-export ROS_DISCOVERY_SERVER=IP_ADDRESS:11811
-export ROS_SUPER_CLIENT=TRUE
-export RMW_IMPLEMENTATION=rmw_fastrtps_cpp    # or cyclone on both, must match
-```
-
-Now run:
-
-```bash
-ros2 daemon stop
-
-ros2 daemon start
-```
-
-And now launch the bringup file on it, you can see all the available topics that are running.
-
-```bash
-ros2 topic list
-```
--->
-  
+---
 
 ## 🛠 Common Issues & Solutions
 
