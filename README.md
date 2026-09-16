@@ -27,24 +27,29 @@ cd UON-CS-robotlab-PC-container/src
 
 ### 2. Open in VS Code
 
-1. Launch VS Code.
-2. Click on Open in Folder option and then open the directory.
-3. Open the `src/` directory of this repo.
-4. You should see a `.devcontainer/` folder in the file tree.
+1. Launch a Terminal. Press `Ctrl+Alt+T`
+2. Type the following in the Terminal to open VS Code.
+
+```bash
+cd COMP4034/src
+code .
+```  
+3. You should see a `.devcontainer/` folder in the file tree now with other Turtlebot Packages alongside it.
 
 ---
 
 ### 3. Reopen in Dev Container
 
-Open the PC's terminal and run:
-
-```bash
-xhost +local:docker
-```
-Inside VS Code:
+1. Now inside VS Code:
   - Press `Ctrl+Shift+P`
-  - Type and select: `Dev Containers: Reopen in Container`
+  - Type and select: `Dev Containers: Rebuild and Reopen in Container`
   - VS Code will now build and launch your ROS 2 container
+
+2. You should see now a colcon build running on your screen and building all the Turtlebot packages.
+
+3. When all of them are finished and it says `Press Any Key to Continue`
+
+4. Go to the top menu and choose `Terminal` and click on `New Terminal`.
 
 ---
 
@@ -57,7 +62,7 @@ source /opt/ros/humble/setup.bash
 ros2 topic list
 ```
 
-If ROS 2 is installed correctly, you’ll see an empty or populated list depending on what's running.
+If ROS 2 environment is installed correctly, and your Turtlebot is switched on for at least 2 Minutes, you’ll see a populated list of the Turtlebot Topics.
 
 ### 5. Connection with the Turtlebot (on Wi-Fi)
 
