@@ -35,6 +35,9 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     ros-humble-gazebo-ros-pkgs\
     ros-humble-gazebo-plugins \
     ros-humble-cv-bridge \
+    ros-humble-image-transport \
+    ros-humble-compressed-image-transport \
+    ros-humble-compressed-depth-image-transport \
     ros-humble-rqt* \
     # ros-humble-gazebo-*\
     # ros-humble-ros-gz\
