@@ -21,6 +21,7 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     nano \
     iputils-ping \
     curl \
+    wget \
     fswebcam \
     gnupg2 \
     lsb-release \
