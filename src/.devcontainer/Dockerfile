@@ -55,6 +55,8 @@ RUN pip install --no-cache-dir \
 RUN echo "source /opt/ros/humble/setup.bash && source /home/ros2_ws/install/setup.bash" >> /home/$USERNAME/.bashrc && \
     usermod -aG video $USERNAME
 
+RUN echo "source /usr/share/gazebo/setup.sh" >> /home/$USERNAME/.bashrc
+
 # Set default user
 USER $USERNAME
 
