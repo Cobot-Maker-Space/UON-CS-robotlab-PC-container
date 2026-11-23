@@ -36,6 +36,8 @@
         },
         "runArgs": [
             "--net=host",
+            "--gpus=all",                              // GPU passthrough - needs nvidia-container-toolkit on the host (installed by the workstations playbook)
+            "-e", "NVIDIA_DRIVER_CAPABILITIES=all",    // "graphics" part adds NVIDIA's OpenGL libs to the container
             "-e", "DISPLAY",
             "-e", "ROS_SUPER_CLIENT",
             "-e", "ROS_DISCOVERY_SERVER",
